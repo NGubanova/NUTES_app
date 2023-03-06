@@ -143,25 +143,41 @@ class _SignUpState extends State<SignUp> {
                       Container(
                         margin: const EdgeInsets.only(
                             right: 400, top: 30, left: 400),
-                        child: BlocBuilder<>
-                          },
-                        ),
+                        child: ElevatedButton(
+                    child: const Text("Зарегистрироваться"),
+                    onPressed: () async {
+                      User user = User(
+                        userName: _loginController.text,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      );
+
+                      User result =
+                          await context.read<AuthCubit>().SignUp(user);
+
+                      if (result != null &&
+                          context.read<AuthCubit>().state is SuccesState) {
+                        Navigator.pushNamed(
+                          context,
+                          '/main_page',
+                          arguments: result,
+                        );
+                      } else {
+                        // handle error or show loading indicator
+                      }
+                    },
+                  )
                       ),
                       const Spacer(flex: 2),
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_key.currentState!.validate()) {
-                              context.read<AuthCubit>().SignUp(User(
-                                  userName: _loginController.text,
-                                  email: _emailController.text,
-                                  password: _passwordController.text));
-                            }
+                                    Navigator.pushNamed(context, '/sign_in');
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
-                            padding: const EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(15)
                           ),
                           child:
                               const Icon(Icons.arrow_back, color: Colors.white),

@@ -19,18 +19,19 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
         transformer: debounceDroppable(Duration(seconds: 2)));
   }
 
-  final _httpClient = Dio();
+  Dio dio = Dio();
 
   _onSearch(SearchUserEvent event, Emitter<NoteState> emit) async {
-    if (event.query.length < 3) return;
-    _httpClient.options.headers["Authorization"] = "Bear";
-    final res = await _httpClient.get(
-      AppEnv.protocol + AppEnv.ip + AppEnv.note, 
+    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." +
+        "eyJleHAiOjE2NzgxMTk5ODksImlhdCI6MTY3OD" +
+        "ExNjM4OSwiaWQiOjl9.RUtBymgL7gGDPsVKNhtijh_cQ0O8GwXxs9d9uo7EaqU";
+    dio.options.headers["Authorization"] = "Bearer $token";
+    final res = await dio.get(
+      AppEnv.protocol + AppEnv.ip + AppEnv.note,
       // queryParameters: {
       //   'nameNote': event.query,
-      // }, 
+      // },
     );
     emit(NoteState(notes: res.data['data']));
   }
-
 }

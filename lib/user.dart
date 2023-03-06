@@ -8,7 +8,7 @@ class User with _$User {
   const factory User({
     required String userName,
     String? email,
-    required String password,
+    String? password,
     @JsonKey(name: 'refreshToken') String? token,
   }) = _User;
 

@@ -110,13 +110,25 @@ class _SignInState extends State<SignIn> {
                               right: 400, top: 30, left: 400),
                           child: CustomButton(
                             content: 'Войти',
-                            onPressed: () {
-                              _isValid = true;
-                              if (_key.currentState!.validate()) {
-                                context.read<AuthCubit>().SignIn(User(
-                                  userName: _loginController.text,
-                                  password: _passwordController.text));
-                              } else {}
+                            onPressed: () async {
+                              User user = User(
+                        userName: _loginController.text,
+                        password: _passwordController.text,
+                      );
+
+                      User result =
+                          await context.read<AuthCubit>().SignIn(user);
+
+                      if (result != null &&
+                          context.read<AuthCubit>().state is SuccesState) {
+                        Navigator.pushNamed(
+                          context,
+                          '/main_page',
+                          arguments: result,
+                        );
+                      } else {
+                        // handle error or show loading indicator
+                      }
                             },
                           ),
                         ),
@@ -129,14 +141,13 @@ class _SignInState extends State<SignIn> {
                             _isValid = false;
                             _key.currentState!.validate();
                           },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 5),
-                            child: Text(
-                              'Регистрация',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ),
+                          child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 5),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/sign_up');
+                                  },
+                                  child: const Text('Регистрация'))),
                         ),
                       ]);
                 }))),

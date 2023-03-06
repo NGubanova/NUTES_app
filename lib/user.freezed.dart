@@ -22,7 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get userName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
   @JsonKey(name: 'refreshToken')
   String? get token => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {String userName,
       String? email,
-      String password,
+      String? password,
       @JsonKey(name: 'refreshToken') String? token});
 }
 
@@ -58,7 +58,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? userName = null,
     Object? email = freezed,
-    Object? password = null,
+    Object? password = freezed,
     Object? token = freezed,
   }) {
     return _then(_value.copyWith(
@@ -70,10 +70,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: null == password
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -91,7 +91,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {String userName,
       String? email,
-      String password,
+      String? password,
       @JsonKey(name: 'refreshToken') String? token});
 }
 
@@ -106,7 +106,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   $Res call({
     Object? userName = null,
     Object? email = freezed,
-    Object? password = null,
+    Object? password = freezed,
     Object? token = freezed,
   }) {
     return _then(_$_User(
@@ -118,10 +118,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: null == password
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class _$_User implements _User {
   const _$_User(
       {required this.userName,
       this.email,
-      required this.password,
+      this.password,
       @JsonKey(name: 'refreshToken') this.token});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -146,7 +146,7 @@ class _$_User implements _User {
   @override
   final String? email;
   @override
-  final String password;
+  final String? password;
   @override
   @JsonKey(name: 'refreshToken')
   final String? token;
@@ -192,7 +192,7 @@ abstract class _User implements User {
   const factory _User(
       {required final String userName,
       final String? email,
-      required final String password,
+      final String? password,
       @JsonKey(name: 'refreshToken') final String? token}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -202,7 +202,7 @@ abstract class _User implements User {
   @override
   String? get email;
   @override
-  String get password;
+  String? get password;
   @override
   @JsonKey(name: 'refreshToken')
   String? get token;

@@ -23,19 +23,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/main_page',
+      initialRoute: '/sign_in',
       routes: {
         '/sign_in': (_) => BlocProvider(
               create: (context) => sl<AuthCubit>(),
-              child: SignIn(),
+              child: const SignIn(),
             ),
         '/sign_up': (_) => BlocProvider(
               create: (context) => sl<AuthCubit>(),
-              child: SignUp(),
+              child: const SignUp(),
             ),
         '/main_page': (_) => BlocProvider(
               create: (context) => sl<AuthCubit>(),
-              child: MainPage(),
+              child: const MainPage(),
             ),
       },
       debugShowCheckedModeBanner: false,
