@@ -123,7 +123,7 @@ class _SignInState extends State<SignIn> {
                           context.read<AuthCubit>().state is SuccesState) {
                         Navigator.pushNamed(
                           context,
-                          '/main_page',
+                          '/all_notes',
                           arguments: result,
                         );
                       } else {

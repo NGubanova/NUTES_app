@@ -20,7 +20,7 @@ Note _$NoteFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Note {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get nameNote => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $NoteCopyWith<$Res> {
       _$NoteCopyWithImpl<$Res, Note>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String nameNote,
       String content,
       String category,
@@ -59,7 +59,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? nameNote = null,
     Object? content = null,
     Object? category = null,
@@ -67,10 +67,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? dateEdit = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       nameNote: null == nameNote
           ? _value.nameNote
           : nameNote // ignore: cast_nullable_to_non_nullable
@@ -102,7 +102,7 @@ abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String nameNote,
       String content,
       String category,
@@ -119,7 +119,7 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? nameNote = null,
     Object? content = null,
     Object? category = null,
@@ -127,10 +127,10 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
     Object? dateEdit = freezed,
   }) {
     return _then(_$_Note(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       nameNote: null == nameNote
           ? _value.nameNote
           : nameNote // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,7 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
 @JsonSerializable()
 class _$_Note implements _Note {
   const _$_Note(
-      {required this.id,
+      {this.id,
       required this.nameNote,
       required this.content,
       required this.category,
@@ -169,7 +169,7 @@ class _$_Note implements _Note {
   factory _$_Note.fromJson(Map<String, dynamic> json) => _$$_NoteFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String nameNote;
   @override
@@ -224,7 +224,7 @@ class _$_Note implements _Note {
 
 abstract class _Note implements Note {
   const factory _Note(
-      {required final int id,
+      {final int? id,
       required final String nameNote,
       required final String content,
       required final String category,
@@ -234,7 +234,7 @@ abstract class _Note implements Note {
   factory _Note.fromJson(Map<String, dynamic> json) = _$_Note.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get nameNote;
   @override

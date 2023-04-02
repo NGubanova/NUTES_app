@@ -45,6 +45,7 @@ dependencies:
   bloc: ^8.1.0
   stream_transform: ^2.0.0
   shared_preferences: ^2.0.15
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
